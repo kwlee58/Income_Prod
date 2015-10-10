@@ -1,0 +1,7 @@
+#quartz(dpi=72)
+png("prod_vs_income.png",width=640,height=640)
+plot(Productivity~Year,data=prod.vs.income,type="l",col="red",xlab="연도", ylab="")
+lines(Real.Median.Family.Income~Year, data=prod.vs.income,col="blue")
+legend("topleft",legend=c("생산성","실질임금"),lty=1,col=c("red","blue"))
+title(main="생산성과 실질임금의 추이(미국)",ylab="%")
+dev.off()

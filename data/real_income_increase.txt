@@ -1,0 +1,6 @@
+Lowest_Quintile	18.3
+Second_Quintile	27.5
+Middle_Quintile	35.2
+Fourth_Quintile	43.3
+81st_99th_Percentiles	65.0
+Top_1_Percent	277.5
