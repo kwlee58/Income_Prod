@@ -48,14 +48,12 @@ y1995.df <- subset(prod.wage.melt, Year == 1995)
 (g2 <- g1 + 
   geom_point(data = end.df, aes(x = Year, y = Cumulative.Changes, colour = Prod.or.Compensation), size = 3, show.legend = FALSE))
 (g3 <- g2 +
-  geom_text(data = y1995.df, aes(x = Year, y = Cumulative.Changes - c(10, 20), label = var.lab)))
-(g4 <- g3 +
+  geom_text(data = y1995.df, aes(x = Year, y = Cumulative.Changes - c(10, 20), label = var.lab)) +
   geom_text(data = end.df, aes(x = Year, y = Cumulative.Changes + 10, label = Cumulative.Changes)) +
-#  annotate("text", x = y1995.df$Year, y = y1995.df$Cumulative.Changes, label = var.lab) +
-#  annotate("text", x = end.df$Year, y = end.df$Cumulative.Changes, label = end.df$Cumulative.Changes) +
   annotate("text", x = c(1950, 1975), y = 200, label = legend.lab, hjust = 0))
-(g5 <- g4 +
+(g4 <- g3 +
   scale_colour_manual(values = c("blue", "cyan")) + 
+  scale_x_continuous(breaks = c(1948, seq(1960, 2010, by = 10), 2014), labels = c(1948, seq(1960, 2010, by = 10), 2014)) +
   labs(title = main.title, x = x.lab, y = y.lab) + 
   theme_bw())
 ggsave("../pics/Productivity_vs_Wages_ggplot.png", width = 8, height = 6)
