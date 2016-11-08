@@ -25,10 +25,11 @@ load("./prod_wage.RData")
 
 ```{r, plot1, echo = FALSE, fig.width = 8, fig.height = 6}
 par(family = "HCR Dotum LVT")
-main.title <- "생산성과 임금(1948-2014)"
+main.title <- "생산성과 시간당 임금(1948-2014)"
 x.lab <- "연도"
 y.lab <- "1948년 이래 누적된 변화(%)"
-legend.lab <- c("1948-1973\n생산성 : 96.7%\n임금 : 91.3%", "1973-2014\n생산성 : 72.2%\n임금 : 9.2%")
+text.lab <- c("시간당 임금", "생산성")
+legend.lab <- c("1948-1973\n생산성 : 96.7%\n시간당 임금 : 91.3%", "1973-2014\n생산성 : 72.2%\n시간당 임금 : 9.2%")
 plot(Net_productivity ~ Year, data = prod.wage, type = "l", col = "blue", xlab = x.lab, ylab = y.lab, main = main.title, lwd = 5, ylim = c(-50, 300), las = 1)
 lines(Hourly_compensation ~ Year, data = prod.wage, col = "cyan", lwd = 5)
 abline(h = seq(-50, 300, by = 50), lty = 3)
@@ -43,21 +44,21 @@ n.rows <- nrow(prod.wage)
 end.df <- subset(prod.wage, Year == Year[n.rows])
 y1995.df <- subset(prod.wage, Year == 1995)
 points(x = rep(end.df[, 1], 2), y = end.df[, 3:2], pch = 21, col = c("blue", "cyan"), bg = c("blue", "cyan"), cex = 1.3)
-text(x = 1995, y = y1995.df[, 2:3], labels = c("시간당 임금", "생산성"), pos = 1, 3)
+text(x = 1995, y = y1995.df[, 2:3], labels = text.lab, pos = 1, 3)
 text(x = 2014, y = end.df[, 2:3], labels = paste(format(end.df[, 2:3], digits = 1, nsmall = 1), "%", sep = ""), pos = 3)
-text(x = c(1960, 1974), y = 225, labels = legend.lab, adj = 0)
+text(x = c(1955, 1974), y = 225, labels = legend.lab, adj = 0)
 # dev.copy(png, file ="../pics/Productivity_vs_Wages_kr.png", width = 640, height = 480)
 ```
 
 <P style = "page-break-before:always"/>
 
-### 순생산성과 평균 임금 및 중위 임금
+### 순생산성과 평균 시간당 임금 및 중위 시간당 임금
 
 ```{r, plot2, echo = FALSE, fig.width = 8, fig.height = 6}
 par(family = "HCR Dotum LVT")
 main.title.2 <- "생산성과 평균 임금 및 중위 임금(1973-2014)"
 y.lab.2 <- "1973년 이래 누적된 변화(%)"
-text.lab <- c("(순)생산성", "평균 임금", "중위 임금")
+text.lab.2 <- c("(순)생산성", "평균\n시간당 임금", "중위\n시간당 임금")
 plot(Net_productivity ~ Year, data = prod.wage.2, type = "l", col = "blue", xlab = x.lab, ylab = y.lab.2, main = main.title.2, lwd = 5, xlim = c(1973, 2018), ylim = c(-5, 80), las = 1)
 lines(Real_average_hourly_compensation ~ Year, data = prod.wage.2, col = "deepskyblue", lwd = 5)
 lines(Real_median_hourly_compensation ~ Year, data = prod.wage.2, col = "cyan", lwd = 5)
@@ -73,7 +74,7 @@ n.rows.2 <- nrow(prod.wage.2)
 end.df.2 <- subset(prod.wage.2, Year == Year[n.rows.2])
 y2007.df <- subset(prod.wage.2, Year == 2007)
 points(x = rep(end.df.2[, 1], 3), y = end.df.2[, 4:2], pch = 21, col = c("blue", "deepskyblue", "cyan"), bg = c("blue", "deepskyblue", "cyan"), cex = 1.3)
-text(x = 2007, y = y2007.df[, 4:2] - c(5, 5, 0), labels = text.lab, pos = 1)
+text(x = 2007, y = y2007.df[, 4:2] - c(3, 3, 0), labels = text.lab.2, pos = 1)
 text(x = end.df.2[, 1], y = end.df.2[, 4:2], labels = paste(end.df.2[, 4:2], "%", sep = ""), pos = 4)
 # dev.copy(png, file ="../pics/Productivity_vs_median_Wages_kr.png", width = 640, height = 480)
 ```
