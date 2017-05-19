@@ -31,9 +31,11 @@ str(prod.wage.melt)
 str(prod.wage.2.melt)
 ```
 
+<P style = "page-break-before:always">
+
 ### Net Productivity and Hourly Compensation
 
-```{r, plot1, echo = FALSE, fig.width = 8, fig.height = 6}
+```{r, plot1, echo = TRUE, fig.width = 8, fig.height = 6}
 library(ggplot2)
 par(family = "HCR Dotum LVT")
 main.title <- "Productivity and Compensation (1948-2014)"
@@ -45,16 +47,48 @@ end.df <- subset(prod.wage.melt, Year == 2014)
 y1995.df <- subset(prod.wage.melt, Year == 1995)
 text.lab <- paste(format(end.df$Cumulative.Changes, digits = 1, nsmall = 1), "%", sep ="")
 (g1 <- ggplot() +
-  geom_line(data = prod.wage.melt, aes(x = Year, y = Cumulative.Changes, colour = Prod.or.Compensation), size = 1.5, show.legend = FALSE))
+  geom_line(data = prod.wage.melt, aes(x = Year, 
+                                       y = Cumulative.Changes, 
+                                       colour = Prod.or.Compensation), 
+            size = 1.5, 
+            show.legend = FALSE))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (g2 <- g1 + 
-  geom_point(data = end.df, aes(x = Year, y = Cumulative.Changes, colour = Prod.or.Compensation), size = 3, show.legend = FALSE))
+  geom_point(data = end.df, aes(x = Year, 
+                                y = Cumulative.Changes, 
+                                colour = Prod.or.Compensation), 
+             size = 3, 
+             show.legend = FALSE))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (g3 <- g2 +
-  geom_text(data = y1995.df, aes(x = Year, y = Cumulative.Changes - c(10, 20), label = var.lab)) +
-  geom_text(data = end.df, aes(x = Year, y = Cumulative.Changes + 10, label = text.lab)) +
-  annotate("text", x = c(1950, 1975), y = 200, label = legend.lab, hjust = 0))
+  geom_text(data = y1995.df, aes(x = Year, 
+                                 y = Cumulative.Changes - c(10, 20), 
+                                 label = var.lab)) +
+  geom_text(data = end.df, aes(x = Year, 
+                               y = Cumulative.Changes + 10, 
+                               label = text.lab)) +
+  annotate("text", 
+           x = c(1950, 1975), 
+           y = 200, 
+           label = legend.lab, 
+           hjust = 0))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (g4 <- g3 +
   scale_colour_manual(values = c("blue", "cyan")) + 
-  scale_x_continuous(breaks = c(1948, seq(1960, 2010, by = 10), 2014), labels = c(1948, seq(1960, 2010, by = 10), 2014)) +
+  scale_x_continuous(breaks = c(1948, seq(1960, 2010, by = 10), 2014), 
+                     labels = c(1948, seq(1960, 2010, by = 10), 2014)) +
   labs(title = main.title, x = x.lab, y = y.lab) + 
   theme_bw())
 ggsave("../pics/Productivity_vs_Wages_ggplot.png", width = 8, height = 6)
@@ -64,7 +98,7 @@ ggsave("../pics/Productivity_vs_Wages_ggplot.png", width = 8, height = 6)
 
 ### Net Productivity vs Average and Median Hourly Compensation
 
-```{r, plot2, echo = FALSE, fig.width = 8, fig.height = 6}
+```{r, plot2, echo = TRUE, fig.width = 8, fig.height = 6}
 par(family = "HCR Dotum LVT")
 main.title.2 <- "Net Productivity, Average and Median Compensation (1973-2014)"
 y.lab.2 <- "Cumulatove Changes since 1973 (%)"
@@ -72,15 +106,43 @@ var.lab.2 <- c("Real Median\n Hourly Compensation", "Real Average\n Hourly Compe
 end.df.2 <- subset(prod.wage.2.melt, Year == 2014)
 y2007.df <- subset(prod.wage.2.melt, Year == 2007)
 (h1 <- ggplot() +
-  geom_line(data = prod.wage.2.melt, aes(x = Year, y = Cumulative.Changes, colour = Prod.or.Compensation), size = 1.5, show.legend = FALSE))
+  geom_line(data = prod.wage.2.melt, aes(x = Year, 
+                                         y = Cumulative.Changes, 
+                                         colour = Prod.or.Compensation), 
+            size = 1.5, 
+            show.legend = FALSE))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (h2 <- h1 + 
-  geom_point(data = end.df.2, aes(x = Year, y = Cumulative.Changes, colour = Prod.or.Compensation), size = 3, show.legend = FALSE))
+  geom_point(data = end.df.2, aes(x = Year, 
+                                  y = Cumulative.Changes, 
+                                  colour = Prod.or.Compensation), 
+             size = 3, 
+             show.legend = FALSE))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (h3 <- h2 +
-  geom_text(data = y2007.df, aes(x = Year, y = Cumulative.Changes - c(5, 10, 10), label = var.lab.2)) +
-  geom_text(data = end.df.2, aes(x = Year + 2, y = Cumulative.Changes, label = paste(Cumulative.Changes, "%", sep = ""))))
+  geom_text(data = y2007.df, aes(x = Year, 
+                                 y = Cumulative.Changes - c(5, 10, 10), 
+                                 label = var.lab.2)) +
+  geom_text(data = end.df.2, aes(x = Year + 2, 
+                                 y = Cumulative.Changes, 
+                                 label = paste(Cumulative.Changes, "%", sep = ""))))
+```
+
+<P style = "page-break-before:always">
+
+```{r, echo = TRUE, fig.width = 8, fig.height = 6}
 (h4 <- h3 +
   scale_colour_manual(values = c("blue", "deepskyblue", "cyan")) + 
-  scale_x_continuous(breaks = c(1973, seq(1980, 2010, by = 10), 2014), labels = c(1973, seq(1980, 2010, by = 10), 2014)) +
+  scale_x_continuous(breaks = c(1973, seq(1980, 2010, by = 10), 2014), 
+                     labels = c(1973, seq(1980, 2010, by = 10), 2014)) +
   labs(title = main.title.2, x = x.lab, y = y.lab.2) + 
   theme_bw())
 ggsave("../pics/Productivity_vs_Wages.2_ggplot.png", width = 8, height = 6)
