@@ -24,7 +24,7 @@ load("./prod_wage.RData")
 ### 순생산성과 시간당 임금
 
 ```{r, plot1, echo = FALSE, fig.width = 8, fig.height = 6}
-par(family = "HCR Dotum LVT")
+par(family = "")
 main.title <- "생산성과 시간당 임금(1948-2014)"
 x.lab <- "연도"
 y.lab <- "1948년 이래 누적된 변화(%)"
@@ -55,7 +55,7 @@ text(x = c(1955, 1974), y = 225, labels = legend.lab, adj = 0)
 ### 순생산성과 평균 시간당 임금 및 중위 시간당 임금
 
 ```{r, plot2, echo = FALSE, fig.width = 8, fig.height = 6}
-par(family = "HCR Dotum LVT")
+par(family = "")
 main.title.2 <- "생산성과 평균 임금 및 중위 임금(1973-2014)"
 y.lab.2 <- "1973년 이래 누적된 변화(%)"
 text.lab.2 <- c("(순)생산성", "평균\n시간당 임금", "중위\n시간당 임금")

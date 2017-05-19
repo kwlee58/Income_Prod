@@ -37,7 +37,7 @@ str(prod.wage.2.melt)
 
 ```{r, plot1, echo = TRUE, fig.width = 8, fig.height = 6}
 library(ggplot2)
-par(family = "HCR Dotum LVT")
+# par(family = "Malgun Gothic")
 main.title <- "Productivity and Compensation (1948-2014)"
 x.lab <- "Year"
 y.lab <- "Cumulative Changes since 1948 (%)"
@@ -99,7 +99,7 @@ ggsave("../pics/Productivity_vs_Wages_ggplot.png", width = 8, height = 6)
 ### Net Productivity vs Average and Median Hourly Compensation
 
 ```{r, plot2, echo = TRUE, fig.width = 8, fig.height = 6}
-par(family = "HCR Dotum LVT")
+# par(family = "Malgun Gothic")
 main.title.2 <- "Net Productivity, Average and Median Compensation (1973-2014)"
 y.lab.2 <- "Cumulatove Changes since 1973 (%)"
 var.lab.2 <- c("Real Median\n Hourly Compensation", "Real Average\n Hourly Compensation", "Net Productivity")
