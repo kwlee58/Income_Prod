@@ -12,7 +12,6 @@ library(knitr)
 
 ## Data
 
-
 ```{r, data, echo = FALSE, results = 'markup'}
 prod_wage <- read.table("../data/productivity_wages.txt", header = TRUE, stringsAsFactors = FALSE)
 prod_wage_2 <- read.table("../data/productivity_median_wages.txt", header = TRUE, stringsAsFactors = FALSE)

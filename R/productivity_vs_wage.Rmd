@@ -24,6 +24,7 @@ load("./prod_wage_RData")
 ### 순생산성과 시간당 보수
 
 ```{r, plot1, echo = FALSE, fig.width = 8, fig.height = 6}
+<<<<<<< HEAD
 par(family = "HCR Dotum LVT")
 main_title <- "생산성과 시간당 보수(1948-2014)"
 x_lab <- "연도"
@@ -32,6 +33,16 @@ text_lab <- c("시간당 보수", "생산성")
 legend_lab <- c("1948-1973\n생산성 : 96.7%\n시간당 보수 : 91.3%", "1973-2014\n생산성 : 72.2%\n시간당 보수 : 9.2%")
 plot(Net_productivity ~ Year, data = prod_wage, type = "l", col = "blue", xlab = x_lab, ylab = y_lab, main = main_title, lwd = 5, ylim = c(-50, 300), las = 1)
 lines(Hourly_compensation ~ Year, data = prod_wage, col = "cyan", lwd = 5)
+=======
+par(family = "")
+main.title <- "생산성과 시간당 임금(1948-2014)"
+x.lab <- "연도"
+y.lab <- "1948년 이래 누적된 변화(%)"
+text.lab <- c("시간당 임금", "생산성")
+legend.lab <- c("1948-1973\n생산성 : 96.7%\n시간당 임금 : 91.3%", "1973-2014\n생산성 : 72.2%\n시간당 임금 : 9.2%")
+plot(Net_productivity ~ Year, data = prod.wage, type = "l", col = "blue", xlab = x.lab, ylab = y.lab, main = main.title, lwd = 5, ylim = c(-50, 300), las = 1)
+lines(Hourly_compensation ~ Year, data = prod.wage, col = "cyan", lwd = 5)
+>>>>>>> 36684d9385f1113127920f9c628949c0f01257b9
 abline(h = seq(-50, 300, by = 50), lty = 3)
 abline(v = 1973, lty = 3)
 # legend(x = 1948, y = 290, legend = c("생산성", "보수"), lty = 1, col = c("blue", "cyan"), lwd = 3:2, bty = "n")
@@ -55,6 +66,7 @@ dev.copy(png, file ="../pics/Productivity_vs_Wages_kr.png", width = 640, height 
 ### 순생산성과 평균 시간당 보수 및 중위 시간당 보수
 
 ```{r, plot2, echo = FALSE, fig.width = 8, fig.height = 6}
+<<<<<<< HEAD
 par(family = "HCR Dotum LVT")
 main_title_2 <- "생산성과 평균 보수 및 중위 보수(1973-2014)"
 y_lab_2 <- "1973년 이래 누적된 변화(%)"
@@ -62,6 +74,15 @@ text_lab_2 <- c("(순)생산성", "평균\n시간당 보수", "중위\n시간당
 plot(Net_productivity ~ Year, data = prod_wage_2, type = "l", col = "blue", xlab = x_lab, ylab = y_lab_2, main = main_title_2, lwd = 5, xlim = c(1973, 2018), ylim = c(-5, 80), las = 1)
 lines(Real_average_hourly_compensation ~ Year, data = prod_wage_2, col = "deepskyblue", lwd = 5)
 lines(Real_median_hourly_compensation ~ Year, data = prod_wage_2, col = "cyan", lwd = 5)
+=======
+par(family = "")
+main.title.2 <- "생산성과 평균 임금 및 중위 임금(1973-2014)"
+y.lab.2 <- "1973년 이래 누적된 변화(%)"
+text.lab.2 <- c("(순)생산성", "평균\n시간당 임금", "중위\n시간당 임금")
+plot(Net_productivity ~ Year, data = prod.wage.2, type = "l", col = "blue", xlab = x.lab, ylab = y.lab.2, main = main.title.2, lwd = 5, xlim = c(1973, 2018), ylim = c(-5, 80), las = 1)
+lines(Real_average_hourly_compensation ~ Year, data = prod.wage.2, col = "deepskyblue", lwd = 5)
+lines(Real_median_hourly_compensation ~ Year, data = prod.wage.2, col = "cyan", lwd = 5)
+>>>>>>> 36684d9385f1113127920f9c628949c0f01257b9
 abline(h = seq(0, 80, by = 20), lty = 3)
 # legend(x = 1973, y = 75, legend = c("(순)생산성", "평균 보수", "중위 보수"), lty = 1, col = c("blue", "deepskyblue", "cyan"), lwd = 5, bty = "n")
 n_rows_2 <- nrow(prod_wage_2)
