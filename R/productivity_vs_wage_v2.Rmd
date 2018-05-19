@@ -71,7 +71,7 @@ dev.copy(png, file ="../pics/Productivity_vs_Wages_kr.png", width = 640, height 
 
 ### 순생산성과 평균 시간당 보수 및 중위 시간당 보수
 
-```{r, plot2, echo = FALSE, fig.width = 8, fig.height = 6}
+```{r, echo = FALSE, fig.width = 8, fig.height = 6}
 par(family = "HCR Dotum LVT")
 main_title_2 <- "생산성과 평균 보수 및 중위 보수(1973-2014)"
 y_lab_2 <- "1973년 이래 누적된 변화(%)"
@@ -86,7 +86,7 @@ prod_wage_2 %>%
 prod_wage_2 %>% 
   lines(Real_median_hourly_compensation ~ Year, data = ., 
         col = "cyan", lwd = 5)
-par(family = "")
+par(family = "HCR Dotum LVT")
 main_title_2 <- "생산성과 평균 임금 및 중위 임금(1973-2014)"
 y_lab_2 <- "1973년 이래 누적된 변화(%)"
 text_lab_2 <- c("(순)생산성", "평균\n시간당 임금", "중위\n시간당 임금")
@@ -113,9 +113,18 @@ end_df_2 <- prod_wage_2 %>%
   subset(Year == Year[n_rows_2])
 y2007_df <- prod_wage_2 %>%
   subset(Year == 2007)
-points(x = rep(end_df_2[, 1], 3), y = end_df_2[, 4:2], pch = 21, col = c("blue", "deepskyblue", "cyan"), bg = c("blue", "deepskyblue", "cyan"), cex = 1.3)
-text(x = 2007, y = y2007_df[, 4:2] - c(3, 3, 0), labels = text_lab_2, pos = 1)
-text(x = end_df_2[, 1], y = end_df_2[, 4:2], labels = paste(end_df_2[, 4:2], "%", sep = ""), pos = 4)
+points(x = end_df_2 %>% `[`(, 1) %>% rep(3), 
+       y = end_df_2 %>% `[`(, 4:2), 
+       pch = 21, col = c("blue", "deepskyblue", "cyan"), 
+       bg = c("blue", "deepskyblue", "cyan"), cex = 1.3)
+points(x = end_df_2 %>% `[`(, 1) %>% rep(3), 
+       y = end_df_2 %>% `[`(, 4:2), 
+       pch = 21, col = c("blue", "deepskyblue", "cyan"), 
+       bg = c("blue", "deepskyblue", "cyan"), cex = 1.3)
+text(x = 2007, y = y2007_df %>% `[`(, 4:2) %>% `-`(c(3, 3, 0)), 
+     labels = text_lab_2, pos = 1)
+text(x = end_df_2 %>% `[`(, 1), y = end_df_2 %>% `[`(, 4:2), 
+     labels = end_df_2 %>% `[`(, 4:2) %>% paste("%", sep = ""), pos = 4)
 dev.copy(png, file ="../pics/Productivity_vs_median_Wages_kr.png", width = 640, height = 480)
 ```
 
