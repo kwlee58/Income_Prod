@@ -37,7 +37,7 @@ prod_wage %>%
        ylim = c(-50, 300), las = 1)
 prod_wage %>% 
   lines(Hourly_compensation ~ Year, data = ., col = "cyan", lwd = 5)
-par(family = "")
+par(family = "HCR Dotum LVT")
 main_title <- "생산성과 시간당 임금(1948-2014)"
 x_lab <- "연도"
 y_lab <- "1948년 이래 누적된 변화(%)"
@@ -59,10 +59,17 @@ n_rows <- prod_wage %>% nrow
 # yend_p <- prod_wage$Net_productivity[n_rows]
 # yend_w <- prod_wage$Hourly_compensation[n_rows]
 end_df <- prod_wage %>% subset(Year == Year[n_rows])
-y_1995df <- prod_wage %>% subset(Year == 1995)
-points(x = rep(end_df[, 1], 2), y = end_df[, 3:2], pch = 21, col = c("blue", "cyan"), bg = c("blue", "cyan"), cex = 1.3)
-text(x = 1995, y = y_1995df[, 2:3], labels = text_lab, pos = 1, 3)
-text(x = 2014, y = end_df[, 2:3], labels = paste(format(end_df[, 2:3], digits = 1, nsmall = 1), "%", sep = ""), pos = 3)
+y_1995_df <- prod_wage %>% subset(Year == 1995)
+points(x = end_df %>% `[`(, 1) %>% rep(2), 
+       y = end_df %>% `[`(, 3:2), 
+       pch = 21, col = c("blue", "cyan"), bg = c("blue", "cyan"), cex = 1.3)
+text(x = 1995, y = y_1995_df %>% `[`(, 2:3), 
+     labels = text_lab, pos = 1, 3)
+text(x = 2014, y = end_df %>% `[`(, 2:3), 
+     labels = end_df %>% 
+       `[`(, 2:3) %>% 
+       format(digits = 1, nsmall = 1) %>% 
+       paste("%", sep = ""), pos = 3)
 text(x = c(1955, 1974), y = 225, labels = legend_lab, adj = 0)
 dev.copy(png, file ="../pics/Productivity_vs_Wages_kr.png", width = 640, height = 480)
 ```
