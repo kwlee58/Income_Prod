@@ -30,7 +30,7 @@ main_title <- "생산성과 시간당 보수(1948-2014)"
 x_lab <- "연도"
 y_lab <- "1948년 이래 누적된 변화(%)"
 text_lab <- c("시간당 보수", "생산성")
-legend_lab <- c("1948-1973\n생산성 : 96.7%\n시간당 보수 : 91.3%", "1973-2014\n생산성 : 72.2%\n시간당 보수 : 9.2%")
+legend_lab <- c("1948-1979\n생산성 : +108.1%\n시간당 보수 : +93.2%", "1979-2018\n생산성 : +69.6%\n시간당 보수 : +11.6%")
 prod_wage %>% 
   plot(Net_productivity ~ Year, data = ., type = "l", col = "blue", 
        xlab = x_lab, ylab = y_lab, main = main_title, lwd = 5, 
@@ -38,11 +38,11 @@ prod_wage %>%
 prod_wage %>% 
   lines(Hourly_compensation ~ Year, data = ., col = "cyan", lwd = 5)
 par(family = "HCR Dotum LVT")
-main_title <- "생산성과 시간당 임금(1948-2014)"
+main_title <- "생산성과 시간당 임금(1948-2018)"
 x_lab <- "연도"
 y_lab <- "1948년 이래 누적된 변화(%)"
 text_lab <- c("시간당 임금", "생산성")
-legend_lab <- c("1948-1973\n생산성 : 96.7%\n시간당 임금 : 91.3%", "1973-2014\n생산성 : 72.2%\n시간당 임금 : 9.2%")
+legend_lab <- c("1948-1979\n생산성 : +108.1%\n시간당 임금 : +93.2%", "1979-2018\n생산성 : +69.6%\n시간당 임금 : +11.6%")
 prod_wage %>% 
   plot(Net_productivity ~ Year, data = ., type = "l", col = "blue", 
        xlab = x_lab, ylab = y_lab, main = main_title, lwd = 5, 
@@ -50,7 +50,7 @@ prod_wage %>%
 prod_wage %>%
   lines(Hourly_compensation ~ Year, data = ., col = "cyan", lwd = 5)
 abline(h = seq(-50, 300, by = 50), lty = 3)
-abline(v = 1973, lty = 3)
+abline(v = 1978, lty = 3)
 # legend(x = 1948, y = 290, legend = c("생산성", "보수"), lty = 1, col = c("blue", "cyan"), lwd = 3:2, bty = "n")
 n_rows <- prod_wage %>% nrow
 # points(Net_productivity[n_rows] ~ Year[n_rows], data = prod_wage, pch = 21, col = "blue", bg = "blue", cex = 1.2)
@@ -64,13 +64,13 @@ points(x = end_df %>% `[`(, 1) %>% rep(2),
        y = end_df %>% `[`(, 3:2), 
        pch = 21, col = c("blue", "cyan"), bg = c("blue", "cyan"), cex = 1.3)
 text(x = 1995, y = y_1995_df %>% `[`(, 2:3), 
-     labels = text_lab, pos = 1, 3)
-text(x = 2014, y = end_df %>% `[`(, 2:3), 
+     labels = text_lab, pos = c(1, 3))
+text(x = 2018, y = end_df %>% `[`(, 2:3), 
      labels = end_df %>% 
        `[`(, 2:3) %>% 
        format(digits = 1, nsmall = 1) %>% 
        paste("%", sep = ""), pos = 3)
-text(x = c(1955, 1974), y = 225, labels = legend_lab, adj = 0)
+text(x = c(1955, 1979), y = 225, labels = legend_lab, adj = 0)
 dev.copy(png, file ="../pics/Productivity_vs_Wages_kr.png", width = 640, height = 480)
 ```
 

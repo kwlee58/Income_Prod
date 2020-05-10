@@ -8,13 +8,14 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
+library(xlsx)
 library(magrittr)
 ```
 
 ## Data
 
 ```{r, data, echo = FALSE, results = 'markup'}
-prod_wage <- "../data/productivity_wages.txt" %>%
+prod_wage <- "../data/productivity_wages_2018.txt" %>%
   read.table(header = TRUE, stringsAsFactors = FALSE)
 prod_wage_2 <- "../data/productivity_median_wages.txt" %>%
   read.table(header = TRUE, stringsAsFactors = FALSE)
